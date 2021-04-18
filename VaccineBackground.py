@@ -1,6 +1,6 @@
 import pygame
 from Images import Images
-
+from Constants import Constants
 
 class VaccineBackground:
 
@@ -9,8 +9,10 @@ class VaccineBackground:
 
     def draw(self, window, axis_begin, axis_end):
         window.blit(self.__images.top_city, self.__images.top_city.get_rect())
-        window.blit(self.__images.stars, (axis_begin, 0))
-        window.blit(self.__images.stars, (axis_end, 0))
-        window.blit(self.__images.bottom_city, (axis_begin, 0))
-        window.blit(self.__images.bottom_city, (axis_end, 0))
+        # window.blit(self.__images.stars, (axis_begin*Constants.SLOWING_STARS, 0))
+        # window.blit(self.__images.stars, (axis_end*Constants.SLOWING_STARS, 0))
+        window.blit(self.__images.back_city, (axis_begin*Constants.SLOWING_BACK_CITY, 0))
+        # window.blit(self.__images.bottom_city, (axis_begin, 0))
+        # window.blit(self.__images.bottom_city, (axis_end, 0))
+
         pygame.display.update()

@@ -15,9 +15,9 @@ class Game:
     def play(self):
         axis_begin = Constants.ZERO
         axis_end = Constants.WIDTH
-
+        x = 1
         while not self.__game_over:
-            axis_begin, axis_end = MovingBackground().move(axis_begin, axis_end)
+            axis_begin, axis_end = MovingBackground().move(axis_begin, axis_end, Constants.VELOCITY)
             VaccineBackground().draw(self.__screen, axis_begin, axis_end)
             Player().draw(self.__screen)
 
