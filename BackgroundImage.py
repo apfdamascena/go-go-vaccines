@@ -17,10 +17,6 @@ class BackgroundImage:
         if self.__axis_end < Constants.WIDTH * Constants.AXIS_ADJUSTMENT:
             self.__axis_end = Constants.WIDTH
         return self.__axis_begin, self.__axis_end
-
-    def draw(self):
-
-    def undraw(self):
         
     @property
     def image(self):

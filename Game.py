@@ -1,5 +1,4 @@
 from Constants import Constants
-from MovingBackground import MovingBackground
 from VaccineBackground import VaccineBackground
 from Player import Player
 import pygame
@@ -13,9 +12,9 @@ class Game:
         pygame.init()
 
     def play(self):
+        vaccines = VaccineBackground()
         while not self.__game_over:
-            axis_begin, axis_end = MovingBackground().move(axis_begin, axis_end, Constants.VELOCITY)
-            VaccineBackground().draw(self.__screen, axis_begin, axis_end)
+            vaccines.draw(self.__screen)
             Player().draw(self.__screen)
 
 
