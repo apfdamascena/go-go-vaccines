@@ -8,7 +8,7 @@ import pygame
 class Game:
 
     def __init__(self):
-        self.__gameOver = False
+        self.__game_over = False
         self.__screen = pygame.display.set_mode((1000, 700))
         pygame.init()
 
@@ -16,7 +16,7 @@ class Game:
         axis_begin = Constants.ZERO
         axis_end = Constants.WIDTH
 
-        while not self.__gameOver:
+        while not self.__game_over:
             axis_begin, axis_end = MovingBackground().move(axis_begin, axis_end)
             VaccineBackground().draw(self.__screen, axis_begin, axis_end)
             Player().draw(self.__screen)
