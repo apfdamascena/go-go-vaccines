@@ -16,10 +16,14 @@ class Game:
         axis_begin = Constants.ZERO
         axis_end = Constants.WIDTH
 
+        axis_x = Constants.INITIAL_X
+        axis_y = Constants.INITIAL_Y
+
         while not self.__game_over:
             axis_begin, axis_end = MovingBackground().move(axis_begin, axis_end)
             VaccineBackground().draw(self.__screen, axis_begin, axis_end)
-            Player().draw(self.__screen)
+            Player().draw(self.__screen, axis_x, axis_y)
+            axis_x, axis_y = Player().move(axis_x, axis_y)
 
 
 if __name__ == "__main__":

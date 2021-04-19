@@ -13,4 +13,3 @@ class VaccineBackground:
         window.blit(self.__images.stars, (axis_end, 0))
         window.blit(self.__images.bottom_city, (axis_begin, 0))
         window.blit(self.__images.bottom_city, (axis_end, 0))
-        pygame.display.update()
