@@ -1,16 +1,15 @@
-from Constants import Constants
+from constants.BackgroundConstants import BackgroundConstants
 
 
 class MovingBackground:
 
     def move(self, axis_begin, axis_end):
 
-        axis_begin -= Constants.VELOCITY
-        axis_end -= Constants.VELOCITY
+        axis_begin -= BackgroundConstants.VELOCITY
+        axis_end -= BackgroundConstants.VELOCITY
 
-        if axis_begin < Constants.WIDTH * Constants.AXIS_ADJUSTMENT:
-            axis_begin = Constants.WIDTH
-        if axis_end < Constants.WIDTH * Constants.AXIS_ADJUSTMENT:
-            axis_end = Constants.WIDTH
+        if axis_begin < BackgroundConstants.WIDTH * BackgroundConstants.AXIS_ADJUSTMENT:
+            axis_begin = BackgroundConstants.WIDTH
+        if axis_end < BackgroundConstants.WIDTH * BackgroundConstants.AXIS_ADJUSTMENT:
+            axis_end = BackgroundConstants.WIDTH
         return axis_begin, axis_end
-
