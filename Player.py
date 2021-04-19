@@ -7,13 +7,13 @@ class Player:
     def __init__(self):
         self.__images = Images()
 
-    def draw(self, window, x, y):
-        window.blit(self.__images.main_character, (x, y, 100, 100))
+    def draw(self, window, axis_x, axis_y):
+        window.blit(self.__images.main_character, (axis_x, axis_y, 100, 100))
         pygame.display.update()
 
-    def move(self, x, y):
-        axis_x = x
-        axis_y = y
+    def move(self, axis_x, axis_y):
+        axis_x = axis_x
+        axis_y = axis_y
 
         for event in pygame.event.get():
 
