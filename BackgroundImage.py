@@ -1,21 +1,21 @@
-from Constants import Constants
+from constants.BackgroundConstants import BackgroundConstants
 
 
 class BackgroundImage:
     def __init__(self, image, mult):
         self.__image = image
         self.__mult = mult 
-        self.__axis_begin = Constants.ZERO
-        self.__axis_end = Constants.WIDTH
+        self.__axis_begin = BackgroundConstants.ZERO
+        self.__axis_end = BackgroundConstants.WIDTH
 
     def move(self):
-        self.__axis_begin -= Constants.VELOCITY * self.__mult
-        self.__axis_end -= Constants.VELOCITY * self.__mult
+        self.__axis_begin -= BackgroundConstants.VELOCITY * self.__mult
+        self.__axis_end -= BackgroundConstants.VELOCITY * self.__mult
 
-        if self.__axis_begin < Constants.WIDTH * Constants.AXIS_ADJUSTMENT:
-            self.__axis_begin = Constants.WIDTH
-        if self.__axis_end < Constants.WIDTH * Constants.AXIS_ADJUSTMENT:
-            self.__axis_end = Constants.WIDTH
+        if self.__axis_begin < BackgroundConstants.WIDTH * BackgroundConstants.AXIS_ADJUSTMENT:
+            self.__axis_begin = BackgroundConstants.WIDTH
+        if self.__axis_end < BackgroundConstants.WIDTH * BackgroundConstants.AXIS_ADJUSTMENT:
+            self.__axis_end = BackgroundConstants.WIDTH
                 
     @property
     def image(self):

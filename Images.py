@@ -8,6 +8,7 @@ class Images:
     STARS = os.path.join('assets', 'background', 'Stars.png')
     IMAGE_TOP_CITY = os.path.join('assets', 'background', 'Background_layer_3.png')
     MOON = os.path.join('assets', 'background', 'Moon.png')
+    MAIN_CHARACTER = os.path.join('assets', 'characters', 'main-character.png')
 
     def __init__(self):
         self.__bottom_city = pygame.image.load(self.IMAGE_BOTTOM_CITY)
@@ -15,6 +16,8 @@ class Images:
         self.__starts = pygame.image.load(self.STARS)
         self.__back_buildings = pygame.image.load(self.IMAGE_BACK_BUILDINGS)
         self.__moon = pygame.image.load(self.MOON)
+        self.__main_character = pygame.image.load(self.MAIN_CHARACTER)
+
     @property
     def bottom_city(self):
         return self.__bottom_city
@@ -34,3 +37,7 @@ class Images:
     @property
     def moon(self):
         return self.__moon
+
+    @property
+    def main_character(self):
+        return self.__main_character

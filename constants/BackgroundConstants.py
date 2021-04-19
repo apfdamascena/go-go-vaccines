@@ -1,5 +1,4 @@
-
-class Constants:
+class BackgroundConstants:
 
     WIDTH = 1388
     ZERO = 0
