@@ -15,6 +15,7 @@ class Game:
         vaccines = VaccineBackground()
         while not self.__game_over:
             vaccines.draw(self.__screen)
+            vaccines.move()
             Player().draw(self.__screen)
 
 

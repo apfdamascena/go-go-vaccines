@@ -2,11 +2,11 @@ from Constants import Constants
 
 
 class BackgroundImage:
-    def __init__(self, img, mult, axis_begin, axis_end):
-        self.__image = img
+    def __init__(self, image, mult):
+        self.__image = image
         self.__mult = mult 
-        self.__axis_begin = axis_begin
-        self.__axis_end = axis_end
+        self.__axis_begin = Constants.ZERO
+        self.__axis_end = Constants.WIDTH
 
     def move(self):
         self.__axis_begin -= Constants.VELOCITY * self.__mult
@@ -16,8 +16,7 @@ class BackgroundImage:
             self.__axis_begin = Constants.WIDTH
         if self.__axis_end < Constants.WIDTH * Constants.AXIS_ADJUSTMENT:
             self.__axis_end = Constants.WIDTH
-        return self.__axis_begin, self.__axis_end
-        
+                
     @property
     def image(self):
         return self.__image

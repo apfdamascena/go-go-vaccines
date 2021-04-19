@@ -1,11 +1,11 @@
 
 class Constants:
 
-    WIDTH = 1000
+    WIDTH = 1388
     ZERO = 0
-    VELOCITY = 30
+    VELOCITY = 10
     AXIS_ADJUSTMENT = -1
-    SLOWING_BACK_CITY = VELOCITY * 0.4
+    SLOWING_BACK_BUILDINGS = 0.4
     SLOWING_STARS = 0.1
     
 
