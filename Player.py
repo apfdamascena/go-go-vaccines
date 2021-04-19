@@ -1,5 +1,6 @@
 import pygame
 from Images import Images
+from constants.PlayerConstants import PlayerConstans
 
 
 class Player:
@@ -19,15 +20,15 @@ class Player:
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
-                    axis_x += 15
+                    axis_x += PlayerConstans.VELOCITY
 
                 if event.key == pygame.K_LEFT:
-                    axis_x -= 15
+                    axis_x -= PlayerConstans.VELOCITY
 
         if pygame.key.get_pressed()[pygame.K_RIGHT]:
-            axis_x += 15
+            axis_x += PlayerConstans.VELOCITY
 
         if pygame.key.get_pressed()[pygame.K_LEFT]:
-            axis_x -= 15
+            axis_x -= PlayerConstans.VELOCITY
 
         return axis_x, axis_y
