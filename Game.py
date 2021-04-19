@@ -14,17 +14,15 @@ class Game:
         pygame.init()
 
     def play(self):
-        axis_begin = BackgroundConstants.ZERO
-        axis_end = BackgroundConstants.WIDTH
-
+        vaccines = VaccineBackground()
         axis_x = PlayerConstants.INITIAL_X
         axis_y = PlayerConstants.INITIAL_Y
-
         while not self.__game_over:
-            axis_begin, axis_end = MovingBackground().move(axis_begin, axis_end)
-            VaccineBackground().draw(self.__screen, axis_begin, axis_end)
+            vaccines.draw(self.__screen)
+            vaccines.move()
             Player().draw(self.__screen, axis_x, axis_y)
             axis_x, axis_y = Player().move(axis_x, axis_y)
+
 
 
 if __name__ == "__main__":
