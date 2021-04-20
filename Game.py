@@ -1,8 +1,8 @@
 from constants.BackgroundConstants import BackgroundConstants
 from constants.PlayerConstants import PlayerConstants
-from MovingBackground import MovingBackground
-from VaccineBackground import VaccineBackground
-from Player import Player
+from background.MovingBackground import MovingBackground
+from background.VaccineBackground import VaccineBackground
+from player.Player import Player
 import pygame
 
 
