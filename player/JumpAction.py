@@ -28,4 +28,8 @@ class JumpAction:
 
     def player_is_jumping(self):
         self.__is_jumping = True
+
+    @property
+    def is_jumping(self):
+        return self.__is_jumping
         

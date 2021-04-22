@@ -3,11 +3,17 @@ import pygame
 
 class ObstacleAssets:
 
-    __OBSTACLE = os.path.join('assets', 'obstacles', 'box.png')
+    BOX_OBSTACLE = os.path.join('assets', 'obstacles', 'box.png')
+    BOXES_OBSTACLE = os.path.join('assets', 'obstacles', 'box_on_top.png')
 
     def __init__(self):
-        self.__obstacle = pygame.image.load(self.__OBSTACLE)
+        self.__box_obstacle = pygame.image.load(self.BOX_OBSTACLE)
+        self.__boxes_obstacle = pygame.image.load(self.BOXES_OBSTACLE)
 
     @property
-    def obstacle(self):
-        return self.__obstacle
+    def box_obstacle(self):
+        return self.__box_obstacle
+
+    @property
+    def boxes_obstacle(self):
+        return self.__boxes_obstacle
