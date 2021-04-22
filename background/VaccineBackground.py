@@ -1,7 +1,7 @@
 import pygame
-from Images import Images
 from constants.BackgroundConstants import BackgroundConstants
-from BackgroundImage import BackgroundImage
+from background.BackgroundImage import BackgroundImage
+from background.Images import Images
 
 class VaccineBackground:
 

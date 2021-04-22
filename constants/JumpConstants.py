@@ -1,0 +1,11 @@
+
+
+class JumpConstants:
+
+    JUMP_TIME = 8
+    ACCELERATION_DIVIDED_BY_TWO = 0.5
+    SQUARE = 2
+    DECREASE_TIME = 1 
+    ARRIVED_IN_ASCENT_TIME = 0
+    GOING_DOWN = -1 
+    GOING_UP = 1
