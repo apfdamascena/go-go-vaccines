@@ -29,14 +29,12 @@ class Game:
             self.__vaccines_background.move()
             self.__player.draw(self.__screen, axis_x, axis_y)
             axis_x, axis_y = self.__player.move(axis_x, axis_y)
-
-            self.__Obstacles.drawObstacle(self.__screen)
-
-
-"""             self.__Box.draw(self.__screen)
+            self.__Box.draw(self.__screen)
             self.__Box.move()
             self.__Boxes.draw(self.__screen)
-            self.__Boxes.move() """
+            self.__Boxes.move()
+
+            # self.__Obstacles.drawObstacle(self.__screen)
 
 
 if __name__ == "__main__":
