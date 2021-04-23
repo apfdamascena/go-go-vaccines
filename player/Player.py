@@ -13,13 +13,14 @@ class Player:
         self.__axis_x = PlayerConstants.INITIAL_X
         self.__axis_y = PlayerConstants.INITIAL_Y
         self.__is_top_box = False
+        self.__var = 0
 
         
     def draw(self, window):
         if self.__squat_action.is_squatting:
             self.__squat_action.squatting(window, self.__axis_x, self.__axis_y)
         else: 
-            window.blit(self.__images.character_right_run, (self.__axis_x, self.__axis_y, 100, 100))
+            window.blit(self.__images.charater_images[self.__var], (self.__axis_x, self.__axis_y, 100, 100))
         #pygame.display.update()
 
     def move(self, hit_top_box, hit_side_box):
@@ -31,9 +32,15 @@ class Player:
                 if not hit_side_box:
                     if event.key == pygame.K_RIGHT:
                         self.__axis_x += PlayerConstants.VELOCITY
-
+                        if self.__var >= (len(self.__images.charater_images)-1)//2:
+                            self.__var = 0
+                        else: self.__var += 1
                     if event.key == pygame.K_LEFT:
                         self.__axis_x -= PlayerConstants.VELOCITY
+                        self.__axis_x -= PlayerConstants.VELOCITY
+                        if self.__var == len(self.__images.charater_images)-1 or self.__var <= (len(self.__images.charater_images)-1)//2 :
+                            self.__var = 4
+                        else: self.__var += 1
                 
                 
 
@@ -50,9 +57,15 @@ class Player:
 
             if pygame.key.get_pressed()[pygame.K_RIGHT]:
                 self.__axis_x += PlayerConstants.VELOCITY
+                if self.__var >= ((len(self.__images.charater_images)-1)//2):
+                    self.__var = 0
+                else: self.__var += 1
 
             if pygame.key.get_pressed()[pygame.K_LEFT]:
                 self.__axis_x -= PlayerConstants.VELOCITY
+                if self.__var == len(self.__images.charater_images)-1:
+                    self.__var = 4
+                else: self.__var += 1
 
         if pygame.key.get_pressed()[pygame.K_DOWN] and not self.__jump_action.is_jumping:
             self.__squat_action.player_is_squatting()
@@ -67,6 +80,7 @@ class Player:
                 self.__axis_y += 105
                 self.__is_top_box = False
 
+    # def change_image(self):
 
     @property
     def axis_x(self):

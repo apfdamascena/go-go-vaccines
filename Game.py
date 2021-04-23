@@ -29,7 +29,7 @@ class Game:
             self.__vaccines_background.move()
 
             hit_top_box, hit_side_box = self.__collision.did_player_collid_with_obstacle(self.__player, self.__box)
-            print(hit_top_box)
+            print(hit_top_box, hit_side_box)
 
             if not hit_side_box:
                 self.__box.move()

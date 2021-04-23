@@ -15,13 +15,13 @@ class Collision:
         if player_rectangle.collidepoint(obstacle.axis_x, obstacle.axis_y):
             return False, True
 
-        if player_rectangle.collidepoint(obstacle.axis_x, obstacle.axis_y-100):
-            return True, False
+        # if player_rectangle.collidepoint(obstacle.axis_x, obstacle.axis_y-100):
+        #     return True, False
 
-        if player_rectangle.collidepoint(obstacle.axis_x+25, obstacle.axis_y-100):
-            return True, False
+        # if player_rectangle.collidepoint(obstacle.axis_x+25, obstacle.axis_y-100):
+        #     return True, False
 
-        if player_rectangle.collidepoint(obstacle.axis_x+50, obstacle.axis_y-100):
+        if player_rectangle.collidepoint(obstacle.axis_x+52, obstacle.axis_y-100):
             return True, False
 
         return False, False
