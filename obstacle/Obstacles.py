@@ -6,7 +6,7 @@ from obstacle.Boxes import Boxes
 
 class Obstacles:
     def __init__(self):
-        self.__box = Box()
+        #self.__box = Box()
         self.__boxes = Boxes()
 
     def draw(self, window):

@@ -24,6 +24,9 @@ class Player:
 
     def move(self, hit_top_box, hit_side_box):
 
+        if hit_top_box:
+            self.__jump_action.stop_jumping()
+
         for event in pygame.event.get():
 
             if event.type == pygame.KEYDOWN:
@@ -60,12 +63,12 @@ class Player:
 
     def change_axis_y(self, hit_top_box):
         if hit_top_box and not self.__is_top_box:
-            self.__axis_y -= 105
+            self.__axis_y = 450
             self.__is_top_box = True
         if not hit_top_box and self.__is_top_box:
-            if self.__is_top_box:
-                self.__axis_y += 105
-                self.__is_top_box = False
+            self.__axis_y = 540
+            self.__is_top_box = False
+
 
 
     @property
