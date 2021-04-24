@@ -1,10 +1,11 @@
 from constants.BackgroundConstants import BackgroundConstants
+from constants.VirusConstants import VirusConstants
 from images.VirusAssets import VirusAssets
 import random
 
 class Virus:
 
-    def __init__(self):
+    def __init__(self, axis_x, random_virus_choice):
         self.__images = VirusAssets()
         self.__virus_options =[
             self.__images.virus_blue,
@@ -12,10 +13,12 @@ class Virus:
             self.__images.virus_red,
             self.__images.virus_yellow
         ]
-        self.__random_choice_virus = 0
-        self.__axis_x = 1315
+        self.__random_choice_virus = random_virus_choice
+        self.__axis_x, self.__saved_axis_x = axis_x, axis_x
         self.__axis_y_options = [
-            580,470, 540]
+            VirusConstants.HEIGHT_VIRUS_ONE,
+            VirusConstants.HEIGHT_VIRUS_TWO,
+            VirusConstants.HEIGHT_VIRUS_THREE]
         self.__random_choice_axis_y = 0
         self.__axis_y  = self.__axis_y_options[self.__random_choice_axis_y]
 
@@ -27,11 +30,11 @@ class Virus:
     def move(self):
         self.__axis_x -= BackgroundConstants.VELOCITY
 
-        if  self.__axis_x < -200:
+        if  self.__axis_x < -VirusConstants.AXIS_X_TO_CHANGE_VIRUS:
             self.__random_choice_virus = random.randint(0, len(self.__virus_options)-1)
             self.__random_choice_axis_y = random.randint(0, len(self.__axis_y_options)-1)
             self.__axis_y  = self.__axis_y_options[self.__random_choice_axis_y]
-            self.__axis_x = 1315 + random.randint(100, 200)
+            self.__axis_x = self.__saved_axis_x + random.randint(472, 1926)
 
     @property
     def axis_x(self):
