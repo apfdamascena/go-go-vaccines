@@ -6,9 +6,13 @@ from player.Player import Player
 from obstacle.Obstacles import Obstacles
 from obstacle.Box import Box
 from obstacle.Boxes import Boxes 
-from Collision import Collision
+from collision.ObstacleCollision import ObstacleCollision
 from obstacle.LShapedObstacle import LShapedObstacle
+from virus.Virus import Virus
+from collision.VirusCollision import VirusCollision
+
 import pygame
+
 
 
 class Game:
@@ -21,8 +25,11 @@ class Game:
         self.__obstacles = Obstacles()
         self.__box = Box(900, 580)
         self.__boxes = Boxes()
+        self.__virus  = Virus()
         #self.__obstacles = LShapedObstacle()
-        self.__collision = Collision()
+        self.__collision = ObstacleCollision()
+        self.__virus_collision =VirusCollision()
+
         pygame.init()
 
     def play(self):
@@ -30,8 +37,13 @@ class Game:
             self.__vaccines_background.draw(self.__screen)
             self.__vaccines_background.move()
 
+            self.__virus.draw(self.__screen)
+            self.__virus.move()
+
             hit_top_box, hit_side_box = self.__collision.did_player_collid_with_obstacle(self.__player, self.__box)
-            print(hit_top_box)
+            hit_virus = self.__virus_collision.did_virus_collide_with_player(self.__player, self.__virus)
+
+            
 
             if not hit_side_box:
                 self.__box.move()
@@ -40,6 +52,8 @@ class Game:
 
 
             self.__player.change_axis_y(hit_top_box)
+
+
             
             self.__player.move(hit_top_box, hit_side_box)
             self.__player.draw(self.__screen)

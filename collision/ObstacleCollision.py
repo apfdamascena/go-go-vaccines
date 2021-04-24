@@ -1,7 +1,7 @@
 from images.PlayerAssets import PlayerAssets
 from images.ObstacleAssets import ObstacleAssets
 
-class Collision:
+class ObstacleCollision:
 
     def __init__(self):
         self.__player_image = PlayerAssets()
