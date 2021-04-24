@@ -1,10 +1,10 @@
-from background.Images import Images
+from images.PlayerAssets import PlayerAssets
 
 class SquatAction:
 
     def __init__(self):
         self.__is_squatting = False
-        self.__images = Images()
+        self.__images = PlayerAssets()
 
 
     def squatting(self,window, axis_x, axis_y):
