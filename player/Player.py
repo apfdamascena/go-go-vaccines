@@ -3,6 +3,7 @@ from images.PlayerAssets import PlayerAssets
 from constants.PlayerConstants import PlayerConstants
 from player.JumpAction import JumpAction
 from player.SquatAction import SquatAction
+from constants.BackgroundConstants import BackgroundConstants
 
 class Player:
 
@@ -29,6 +30,7 @@ class Player:
             # pygame.display.update()
 
     def move(self, hit_top_box, hit_side_box):
+        print(hit_top_box, hit_side_box)
 
         if hit_top_box:
             self.__jump_action.stop_jumping()
@@ -46,20 +48,18 @@ class Player:
         self.__axis_y = self.__jump_action.jumping(self.__axis_y)
 
 
-        if not hit_side_box:
 
-            if pygame.key.get_pressed()[pygame.K_RIGHT]:
-                self.__axis_x += PlayerConstants.VELOCITY
-                self.change_image()
-                self.__direction_right = True
+        if pygame.key.get_pressed()[pygame.K_RIGHT] and not hit_side_box:
+            self.__axis_x += PlayerConstants.VELOCITY
+            self.change_image()
+            self.__direction_right = True
 
-            elif pygame.key.get_pressed()[pygame.K_LEFT]:
-                self.__axis_x -= PlayerConstants.VELOCITY
-                self.change_image()
-                self.__direction_right = False
-
-            else:
-                self.__character_position = 0
+        elif pygame.key.get_pressed()[pygame.K_LEFT]:
+            self.__axis_x -= PlayerConstants.VELOCITY
+            self.change_image()
+            self.__direction_right = False
+        else:
+            self.__character_position = 0
 
         if pygame.key.get_pressed()[pygame.K_DOWN] and not self.__jump_action.is_jumping:
             self.__squat_action.player_is_squatting()
@@ -78,6 +78,9 @@ class Player:
             self.__character_position = 0
         else: 
             self.__character_position +=1
+
+    def change_axis_x(self):
+        self.__axis_x -= BackgroundConstants.VELOCITY
 
     @property
     def axis_x(self):
