@@ -5,6 +5,8 @@ from collision.ObstacleCollision import ObstacleCollision
 from manager.VirusManager import VirusManager
 from manager.ObstacleManager import ObstacleManager
 from collision.VirusCollision import VirusCollision
+from collectables.Heart import Heart
+from collectables.Vaccine import Vaccine
 import pygame
 
 class Game:
@@ -18,7 +20,8 @@ class Game:
         self.__box_manager = ObstacleManager()
         self.__collision = ObstacleCollision()
         self.__virus_collision = VirusCollision()
-
+        self.__heart = Heart()
+        self.__vaccine = Vaccine()
         pygame.init()
 
     def play(self):
@@ -39,6 +42,8 @@ class Game:
             self.__player.change_axis_y(hit_top_box)
             self.__player.move(hit_top_box, hit_side_box)
             self.__player.draw(self.__screen)
+            self.__heart.draw(self.__screen)
+            self.__vaccine.draw(self.__screen)
             pygame.display.update()
 
 
