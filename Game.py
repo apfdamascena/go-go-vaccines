@@ -5,6 +5,8 @@ from collision.ObstacleCollision import ObstacleCollision
 from manager.VirusManager import VirusManager
 from manager.ObstacleManager import ObstacleManager
 from collision.VirusCollision import VirusCollision
+from collision.HeartCollision import HeartCollision
+from collectables.IndependentHeart import IndependentHeart
 from collectables.Heart import Heart
 from collectables.Vaccine import Vaccine
 import pygame
@@ -21,6 +23,8 @@ class Game:
         self.__collision = ObstacleCollision()
         self.__virus_collision = VirusCollision()
         self.__heart = Heart()
+        self.__heart_collision = HeartCollision()
+        self.__independent_heart = IndependentHeart()
         self.__vaccine = Vaccine()
         pygame.init()
 
@@ -34,6 +38,7 @@ class Game:
 
             hit_top_box, hit_side_box = self.__collision.did_player_collid_with_obstacle(self.__player, self.__box_manager.boxes)
             hit_virus = self.__virus_collision.did_virus_collide_with_player(self.__player, self.__virus_manager.virus)
+            hit_heart = self.__heart_collision.did_heart_collide_with_player(self.__player, self.__independent_heart)
 
             if not hit_side_box:
                 self.__box_manager.move()
@@ -43,6 +48,11 @@ class Game:
             self.__player.move(hit_top_box, hit_side_box)
             self.__player.draw(self.__screen)
             self.__heart.draw(self.__screen)
+            self.__independent_heart.draw(self.__screen)
+            if hit_heart:
+                self.__independent_heart.colided()
+                self.__heart.win_life()
+            
             self.__vaccine.draw(self.__screen)
             pygame.display.update()
 

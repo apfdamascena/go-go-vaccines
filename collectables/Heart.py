@@ -1,12 +1,12 @@
 import pygame
-from images.CollectablesAssets import CollectableAssets
+from images.CollectablesAssets import CollectablesAssets
 from constants.CollectablesConstants import CollectableConstants
 
 class Heart:
 
     def __init__(self):
-        self.__images = CollectableAssets()
-        self.__current_life = 3
+        self.__images = CollectablesAssets()
+        self.__current_life = 2
         self.__x = CollectableConstants.X_HEART
         self.__y = CollectableConstants.Y_HEART
 

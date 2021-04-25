@@ -1,11 +1,11 @@
 import pygame
-from images.CollectablesAssets import CollectableAssets
+from images.CollectablesAssets import CollectablesAssets
 from constants.CollectablesConstants import CollectableConstants
 
 class Vaccine:
 
     def __init__(self):
-        self.__images = CollectableAssets()
+        self.__images = CollectablesAssets()
         self.__vaccine_amount = 0
         self.__x = CollectableConstants.X_VACCINE
         self.__y = CollectableConstants.Y_VACCINE

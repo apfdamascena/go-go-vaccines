@@ -2,7 +2,7 @@ import os
 import pygame
 
 
-class CollectableAssets:
+class CollectablesAssets:
 
     HEART = os.path.join('assets', 'collectables', 'heart.png')
     GREY_HEART = os.path.join('assets', 'collectables', 'heart-grey.png')
