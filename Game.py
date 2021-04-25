@@ -5,6 +5,7 @@ from collision.ObstacleCollision import ObstacleCollision
 from manager.VirusManager import VirusManager
 from manager.ObstacleManager import ObstacleManager
 from collision.VirusCollision import VirusCollision
+from crocodile.Crocodile import Crocodile
 import pygame
 
 class Game:
@@ -18,6 +19,7 @@ class Game:
         self.__box_manager = ObstacleManager()
         self.__collision = ObstacleCollision()
         self.__virus_collision = VirusCollision()
+        self.__crocodile = Crocodile(680)
 
         pygame.init()
 
@@ -39,6 +41,8 @@ class Game:
             self.__player.change_axis_y(hit_top_box)
             self.__player.move(hit_top_box, hit_side_box)
             self.__player.draw(self.__screen)
+            self.__crocodile.draw(self.__screen)
+            self.__crocodile.move()
             pygame.display.update()
 
 
