@@ -5,6 +5,8 @@ from collision.ObstacleCollision import ObstacleCollision
 from manager.VirusManager import VirusManager
 from manager.ObstacleManager import ObstacleManager
 from collision.VirusCollision import VirusCollision
+from crocodile.Crocodile import Crocodile
+from collision.CrocodileCollision import CrocodileCollision
 import pygame
 
 class Game:
@@ -16,8 +18,10 @@ class Game:
         self.__vaccines_background = VaccineBackground()
         self.__virus_manager  = VirusManager()
         self.__box_manager = ObstacleManager()
-        self.__collision = ObstacleCollision()
+        self.__obstacle_collision = ObstacleCollision()
         self.__virus_collision = VirusCollision()
+        self.__crocodile = Crocodile(680)
+        self.__crocodile_collision = CrocodileCollision()
 
         pygame.init()
 
@@ -29,8 +33,11 @@ class Game:
             self.__virus_manager.draw(self.__screen)
             self.__virus_manager.move()
 
-            hit_top_box, hit_side_box = self.__collision.did_player_collid_with_obstacle(self.__player, self.__box_manager.boxes)
+            hit_top_box, hit_side_box = self.__obstacle_collision.did_player_collid_with_obstacle(self.__player, self.__box_manager.boxes)
             hit_virus = self.__virus_collision.did_virus_collide_with_player(self.__player, self.__virus_manager.virus)
+            hit_crocodile = self.__crocodile_collision.did_player_collide_with_crocodile(self.__player, self.__crocodile)
+
+            print(hit_crocodile)
 
             if not hit_side_box:
                 self.__box_manager.move()
@@ -39,6 +46,8 @@ class Game:
             self.__player.change_axis_y(hit_top_box)
             self.__player.move(hit_top_box, hit_side_box)
             self.__player.draw(self.__screen)
+            self.__crocodile.draw(self.__screen)
+            self.__crocodile.move()
             pygame.display.update()
 
 
