@@ -1,13 +1,15 @@
 from constants.BackgroundConstants import BackgroundConstants
 from constants.VirusConstants import VirusConstants
 from images.VirusAssets import VirusAssets
+from virus.WaveMovement import WaveMovement
 import random
+
 
 class Virus:
 
     def __init__(self, axis_x, random_virus_choice):
         self.__images = VirusAssets()
-        self.__virus_options =[
+        self.__virus_options = [
             self.__images.virus_blue,
             self.__images.virus_green,
             self.__images.virus_red,
@@ -20,21 +22,28 @@ class Virus:
             VirusConstants.HEIGHT_VIRUS_TWO,
             VirusConstants.HEIGHT_VIRUS_THREE]
         self.__random_choice_axis_y = 0
-        self.__axis_y  = self.__axis_y_options[self.__random_choice_axis_y]
+        self.__axis_y = self.__axis_y_options[self.__random_choice_axis_y]
+        self.__saved_axis_y = self.__axis_y_options[self.__random_choice_axis_y]
+        self.__wave_movement = WaveMovement()
 
     
     def draw(self, window):
         window.blit(self.__virus_options[self.__random_choice_virus],
-                    (self.__axis_x, self.__axis_y_options[self.__random_choice_axis_y], 30, 30)) 
+                    (self.__axis_x, self.__axis_y, 30, 30)) 
     
     def move(self):
         self.__axis_x -= BackgroundConstants.VELOCITY
-
         if  self.__axis_x < -VirusConstants.AXIS_X_TO_CHANGE_VIRUS:
-            self.__random_choice_virus = random.randint(0, len(self.__virus_options)-1)
-            self.__random_choice_axis_y = random.randint(0, len(self.__axis_y_options)-1)
-            self.__axis_y  = self.__axis_y_options[self.__random_choice_axis_y]
-            self.__axis_x = self.__saved_axis_x + random.randint(472, 1926)
+            self.__restart_position_and_virus_choice()
+        else:
+            self.__axis_y = self.__wave_movement.moving(self.__axis_x, self.__saved_axis_y)
+
+    def __restart_position_and_virus_choice(self):
+        self.__random_choice_virus = random.randint(0, len(self.__virus_options)-1)
+        self.__random_choice_axis_y = random.randint(0, len(self.__axis_y_options)-1)
+        self.__axis_y  = self.__axis_y_options[self.__random_choice_axis_y]
+        self.__saved_axis_y = self.__axis_y
+        self.__axis_x = self.__saved_axis_x + random.randint(472, 1926)
 
     @property
     def axis_x(self):
