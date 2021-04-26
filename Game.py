@@ -5,7 +5,10 @@ from collision.ObstacleCollision import ObstacleCollision
 from manager.VirusManager import VirusManager
 from manager.ObstacleManager import ObstacleManager
 from collision.VirusCollision import VirusCollision
+from menu.Menu import Menu
+from menu.Credits import Credits
 import pygame
+
 
 class Game:
 
@@ -14,32 +17,60 @@ class Game:
         self.__screen = pygame.display.set_mode((1000, 700))
         self.__player = Player()
         self.__vaccines_background = VaccineBackground()
-        self.__virus_manager  = VirusManager()
+        self.__virus_manager = VirusManager()
         self.__box_manager = ObstacleManager()
         self.__collision = ObstacleCollision()
         self.__virus_collision = VirusCollision()
+        self.__menu = Menu(self.__vaccines_background)
+        self.__credits = Credits(self.__vaccines_background)
+        self.__start = False
+        self.__credits_action = False
+        self.__menu_action = False
 
         pygame.init()
 
     def play(self):
-        while not self.__game_over:
-            self.__vaccines_background.draw(self.__screen)
-            self.__vaccines_background.move()
+        while True:
+            action = self.__menu.main()
 
-            self.__virus_manager.draw(self.__screen)
-            self.__virus_manager.move()
+            if action == 'START':
+                self.__menu_action = False
+                self.__start = True
 
-            hit_top_box, hit_side_box = self.__collision.did_player_collid_with_obstacle(self.__player, self.__box_manager.boxes)
-            hit_virus = self.__virus_collision.did_virus_collide_with_player(self.__player, self.__virus_manager.virus)
+            if action == 'CREDITS':
+                self.__credits_action = True
 
-            if not hit_side_box:
-                self.__box_manager.move()
-            self.__box_manager.draw(self.__screen)
+            if action == 'MENU':
+                self.__menu_action = True
 
-            self.__player.change_axis_y(hit_top_box)
-            self.__player.move(hit_top_box, hit_side_box)
-            self.__player.draw(self.__screen)
-            pygame.display.update()
+            while self.__menu_action:
+                action = self.__menu.main()
+
+            while self.__credits_action:
+                action = self.__credits.main()
+                self.__credits_action = False
+                self.__menu_action = True
+
+            while self.__start:
+                self.__vaccines_background.draw(self.__screen)
+                self.__vaccines_background.move()
+
+                self.__virus_manager.draw(self.__screen)
+                self.__virus_manager.move()
+
+                hit_top_box, hit_side_box = self.__collision.did_player_collid_with_obstacle(
+                    self.__player, self.__box_manager.boxes)
+                hit_virus = self.__virus_collision.did_virus_collide_with_player(
+                    self.__player, self.__virus_manager.virus)
+
+                if not hit_side_box:
+                    self.__box_manager.move()
+                self.__box_manager.draw(self.__screen)
+
+                self.__player.change_axis_y(hit_top_box)
+                self.__player.move(hit_top_box, hit_side_box)
+                self.__player.draw(self.__screen)
+                pygame.display.update()
 
 
 if __name__ == "__main__":
