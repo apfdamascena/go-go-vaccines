@@ -6,14 +6,14 @@ class Heart:
 
     def __init__(self):
         self.__images = CollectablesAssets()
-        self.__current_life = 2
+        self.__current_life = CollectableConstants.HEART_QUANTITY
         self.__x = CollectableConstants.X_HEART
         self.__y = CollectableConstants.Y_HEART
 
     def draw(self, window):
         for x in range(self.__current_life):
             window.blit(self.__images.heart, (self.__x+(x*62), self.__y, 100, 100))
-        for x in range(2, self.__current_life -1, -1):
+        for x in range(CollectableConstants.HEART_QUANTITY-1, self.__current_life -1, -1):
             window.blit(self.__images.grey_heart, (self.__x+(x*62), self.__y, 100, 100))
 
     def lost_life(self):

@@ -11,7 +11,6 @@ class Vaccine:
         self.__y = CollectableConstants.Y_VACCINE
 
     def draw(self, window):
-        white = (255, 255, 255)
         black = (0,0,0)
         window.blit(self.__images.vaccine, (self.__x, self.__y, 100, 100))
         font = pygame.font.SysFont('comicsansms', 55)
@@ -24,7 +23,7 @@ class Vaccine:
         self.__vaccine_amount -= 1
 
     def got_vaccine(self):
-        if self.__vaccine_amount >= 99:
+        if self.__vaccine_amount <= 99:
             self.__vaccine_amount += 1
     
     def draw_collectable_vaccine(self, axis_x, axis_y):

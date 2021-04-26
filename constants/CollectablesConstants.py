@@ -7,3 +7,4 @@ class CollectableConstants:
     INITIAL_Y = 450
     INITIAL_X = 1300
     SPAWN_TIME = 1
+    HEART_QUANTITY = 3
