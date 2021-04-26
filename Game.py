@@ -1,5 +1,6 @@
 from background.MovingBackground import MovingBackground
 from background.VaccineBackground import VaccineBackground
+from background.VaccineTransparentBackground import VaccineTransparentBackground
 from player.Player import Player
 from collision.ObstacleCollision import ObstacleCollision
 from manager.VirusManager import VirusManager
@@ -25,12 +26,13 @@ class Game:
         self.__screen = pygame.display.set_mode((1000, 700))
         self.__player = Player()
         self.__vaccines_background = VaccineBackground()
+        self.__vaccines_transparent_background = VaccineTransparentBackground()
         self.__virus_manager = VirusManager()
         self.__box_manager = ObstacleManager()
         self.__obstacle_collision = ObstacleCollision()
         self.__virus_collision = VirusCollision()
-        self.__menu = Menu(self.__vaccines_background)
-        self.__credits = Credits(self.__vaccines_background)
+        self.__menu = Menu(self.__vaccines_transparent_background)
+        self.__credits = Credits(self.__vaccines_transparent_background)
         self.__start = False
         self.__credits_action = False
         self.__menu_action = False
