@@ -1,11 +1,12 @@
 .idea
-/__pycache__
-/constants/__pycache__
-/player/__pycache__
-/obstacle/__pycache__
 /background/__pycache__
+/collectables/__pycache__
 /collision/__pycache__
+/constants/__pycache__
+/crocodile/__pycache__
 /images/__pycache__
 /manager/__pycache__
+/menu/__pycache__
+/obstacle/__pycache__
+/player/__pycache__
 /virus/__pycache__
-/crocodile/__pycache__
