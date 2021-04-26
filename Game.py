@@ -37,10 +37,10 @@ class Game:
             hit_virus = self.__virus_collision.did_virus_collide_with_player(self.__player, self.__virus_manager.virus)
             hit_crocodile = self.__crocodile_collision.did_player_collide_with_crocodile(self.__player, self.__crocodile)
 
-            print(hit_crocodile)
-
-            if not hit_side_box:
-                self.__box_manager.move()
+        
+            self.__player.change_axis_x()
+            
+            self.__box_manager.move()
             self.__box_manager.draw(self.__screen)
 
             self.__player.change_axis_y(hit_top_box)
