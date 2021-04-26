@@ -21,20 +21,22 @@ class IndependentHeart:
     
     def organize_spawn(self):
         current_time = time.time()
-        if self.__spawn <= current_time - CollectableConstants.SPAWN_TIME:
+        if self.__spawn_time <= current_time - CollectableConstants.SPAWN_TIME_HEART:
             self.__spawn = True
-            self.__spawn = current_time
+            self.__spawn_time = current_time
     
     def move(self):
         self.__axis_x -= BackgroundConstants.VELOCITY
         if self.__axis_x <= 0 or self.__colided:
-            self.__spawn = True
+            self.__spawn = False
             self.__axis_x = CollectableConstants.INITIAL_X
             self.__axis_y = CollectableConstants.INITIAL_Y 
             self.__colided = False
 
     def colided(self):
         self.__colided = True
+        self.__spawn_time = time.time()
+
 
     @property
     def axis_x(self):

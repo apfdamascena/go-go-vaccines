@@ -11,6 +11,8 @@ from collectables.IndependentHeart import IndependentHeart
 from collectables.IndependentVaccine import IndependentVaccine
 from collectables.Heart import Heart
 from collectables.Vaccine import Vaccine
+from crocodile.Crocodile import Crocodile
+from collision.CrocodileCollision import CrocodileCollision
 import pygame
 
 class Game:
@@ -22,7 +24,7 @@ class Game:
         self.__vaccines_background = VaccineBackground()
         self.__virus_manager  = VirusManager()
         self.__box_manager = ObstacleManager()
-        self.__collision = ObstacleCollision()
+        self.__obstacle_collision = ObstacleCollision()
         self.__virus_collision = VirusCollision()
         self.__heart = Heart()
         self.__heart_collision = HeartCollision()
@@ -30,6 +32,9 @@ class Game:
         self.__vaccine = Vaccine()
         self.__independent_vaccine = IndependentVaccine()
         self.__vaccine_collision = VaccineCollision()
+        self.__crocodile = Crocodile(680)
+        self.__crocodile_collision = CrocodileCollision()
+
         pygame.init()
 
     def play(self):
@@ -40,11 +45,14 @@ class Game:
             self.__virus_manager.draw(self.__screen)
             self.__virus_manager.move()
 
-            hit_top_box, hit_side_box = self.__collision.did_player_collid_with_obstacle(self.__player, self.__box_manager.boxes)
+            hit_top_box, hit_side_box = self.__obstacle_collision.did_player_collid_with_obstacle(self.__player, self.__box_manager.boxes)
             hit_virus = self.__virus_collision.did_virus_collide_with_player(self.__player, self.__virus_manager.virus)
-          
-            if not hit_side_box:
-                self.__box_manager.move()
+            hit_crocodile = self.__crocodile_collision.did_player_collide_with_crocodile(self.__player, self.__crocodile)
+
+        
+            self.__player.change_axis_x()
+            
+            self.__box_manager.move()
             self.__box_manager.draw(self.__screen)
 
             self.__player.change_axis_y(hit_top_box)
@@ -65,6 +73,8 @@ class Game:
                 self.__independent_vaccine.colided()
                 self.__vaccine.got_vaccine()
             
+            self.__crocodile.draw(self.__screen)
+            self.__crocodile.move()
             pygame.display.update()
 
 

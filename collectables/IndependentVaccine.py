@@ -16,24 +16,25 @@ class IndependentVaccine:
     def draw(self, window):
         self.organize_spawn()
         if self.__spawn:
-            window.blit(self.__images.vaccine, (self.__axis_x, self.__axis_y, 100, 100))
             self.move()
+            window.blit(self.__images.vaccine, (self.__axis_x, self.__axis_y, 100, 100))
     
     def organize_spawn(self):
         current_time = time.time()
-        if self.__spawn <= current_time - CollectableConstants.SPAWN_TIME:
+        if self.__spawn_time <= current_time - CollectableConstants.SPAWN_TIME_VACCINE:
             self.__spawn = True
-            self.__spawn = current_time
+            self.__spawn_time = current_time
     
     def move(self):
         self.__axis_x -= BackgroundConstants.VELOCITY
         if self.__axis_x <= 0 or self.__colided:
-            self.__spawn = True
+            self.__spawn = False
             self.__axis_x = CollectableConstants.INITIAL_X
             self.__axis_y = CollectableConstants.INITIAL_Y 
             self.__colided = False
 
     def colided(self):
+        self.__spawn_time = time.time()
         self.__colided = True
 
     @property
