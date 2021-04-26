@@ -50,8 +50,6 @@ class Game:
             hit_crocodile = self.__crocodile_collision.did_player_collide_with_crocodile(self.__player, self.__crocodile)
 
         
-            self.__player.change_axis_x()
-            
             self.__box_manager.move()
             self.__box_manager.draw(self.__screen)
 
