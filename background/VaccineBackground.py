@@ -20,8 +20,9 @@ class VaccineBackground:
         window.blit(self.__back_buildings.image, (self.__back_buildings.axis_end, 0))
         window.blit(self.__bottom_city.image, (self.__bottom_city.axis_begin, 0))
         window.blit(self.__bottom_city.image, (self.__bottom_city.axis_end, 0))
+        self.__move()
 
-    def move(self):
+    def __move(self):
         self.__stars.move()
         self.__back_buildings.move()
         self.__bottom_city.move()

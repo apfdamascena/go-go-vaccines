@@ -1,15 +1,16 @@
 from background.MovingBackground import MovingBackground
 from background.VaccineBackground import VaccineBackground
+from background.VaccineTransparentBackground import VaccineTransparentBackground
 import pygame
 import sys
 
 
 class Credits:
 
-    def __init__(self, background):
+    def __init__(self):
         self.__start = False
         self.__screen = pygame.display.set_mode((1000, 700))
-        self.__vaccines_background = background
+        self.__vaccines_background = VaccineTransparentBackground()
 
     def main(self):
         action = True

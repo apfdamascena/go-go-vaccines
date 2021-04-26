@@ -1,22 +1,20 @@
 import sys
 import pygame
-
+from background.VaccineTransparentBackground import VaccineTransparentBackground
 
 class Menu:
 
-    def __init__(self, background):
+    def __init__(self):
         self.__start = False
         self.__screen = pygame.display.set_mode((1000, 700))
-        self.__vaccines_background = background
-
+        self.__vaccines_background = VaccineTransparentBackground()
         pygame.init()
 
     def main(self):
-        while True:
 
+        while True:
             font = pygame.font.SysFont('Consolas', 30, bold=True)
             self.__vaccines_background.draw(self.__screen)
-            self.__vaccines_background.move()
 
             start_option = font.render('START', True, (255, 255, 255))
             credits_option = font.render('CREDITS', True, (255, 255, 255))

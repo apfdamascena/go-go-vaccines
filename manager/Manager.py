@@ -9,7 +9,8 @@ class Manager:
     def draw(self, window):
         for abstraction in self.__controlled_abstractions:
             abstraction.draw(window)
+        self.__move()
 
-    def move(self):
+    def __move(self):
         for abstraction in self.__controlled_abstractions:
             abstraction.move()
