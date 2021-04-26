@@ -30,9 +30,13 @@ class Crocodile:
 
     def move(self):
         self.__axis_x -= BackgroundConstants.VELOCITY
+        self.__walk()
 
         if  self.__axis_x < - CrocodileConstants.AXIS_X_TO_CHANGE_CROCODILE:
             self.__axis_x = self.__saved_axis_x + random.randint(623, 1926)
+
+    def __walk(self):
+        self.__axis_x -= CrocodileConstants.VELOCITY
 
     @property
     def crocodile(self):

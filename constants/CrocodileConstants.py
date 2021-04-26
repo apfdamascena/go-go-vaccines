@@ -8,3 +8,4 @@ class CrocodileConstants:
     CROCODILE_THREE = 625
     QUANTITY_OF_CROCODILE = 3
     VELOCITY_TO_CHANGE_IMAGE = 1
+    VELOCITY = 3
