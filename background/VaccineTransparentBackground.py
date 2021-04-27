@@ -32,8 +32,9 @@ class VaccineTransparentBackground:
                     (0, 0))
         window.blit(self.__transparent_layer.image,
                     (1000, 0))
+        self.__move()
 
-    def move(self):
+    def __move(self):
         self.__stars.move()
         self.__back_buildings.move()
         self.__bottom_city.move()
