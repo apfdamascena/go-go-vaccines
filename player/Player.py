@@ -6,6 +6,7 @@ from player.SquatAction import SquatAction
 from constants.BackgroundConstants import BackgroundConstants
 from player.Movement import Movement
 
+
 class Player:
 
     def __init__(self):
@@ -27,19 +28,21 @@ class Player:
 
                 if event.key == pygame.K_UP or event.key == pygame.K_SPACE:
                     self.__movement.jump.player_is_jumping()
-                
+
                 if event.key == pygame.K_DOWN and not self.__movement.jump.is_jumping:
                     self.__movement.squat.player_is_squatting()
 
         self.__axis_y = self.__movement.jump.jumping(self.__axis_y)
 
         if pygame.key.get_pressed()[pygame.K_RIGHT] and not hit_side_box:
-            self.__axis_x += PlayerConstants.VELOCITY
-            self.__movement.handle_bottom_right_pressed()
+            if (self.axis_x < 900):
+                self.__axis_x += PlayerConstants.VELOCITY
+                self.__movement.handle_bottom_right_pressed()
 
         elif pygame.key.get_pressed()[pygame.K_LEFT]:
-            self.__axis_x -= PlayerConstants.VELOCITY
-            self.__movement.handle_bottom_left_pressed()
+            if (self.__axis_x != 0):
+                self.__axis_x -= PlayerConstants.VELOCITY
+                self.__movement.handle_bottom_left_pressed()
         else:
             self.__movement.restart_player()
 
@@ -48,10 +51,9 @@ class Player:
 
         self.__walk()
 
-
     def __walk(self):
-        self.__axis_x -= BackgroundConstants.VELOCITY
-
+        if (self.__axis_x != 0):
+            self.__axis_x -= BackgroundConstants.VELOCITY
 
     def change_axis_y(self, hit_top_box):
         if hit_top_box and not self.__is_top_box:
