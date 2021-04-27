@@ -72,3 +72,5 @@ class Player:
     @property
     def is_top_box(self):
         return self.__is_top_box
+
+    

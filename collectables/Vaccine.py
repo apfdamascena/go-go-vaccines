@@ -21,14 +21,13 @@ class Vaccine:
 
     def spend_vaccine(self):
         self.__vaccine_amount -= 1
+    
+    def zero_vaccine_left(self):
+        return self.__vaccine_amount == 0
 
     def got_vaccine(self):
         if self.__vaccine_amount <= 99:
             self.__vaccine_amount += 1
-    
-    def draw_collectable_vaccine(self, axis_x, axis_y):
-        window.blit(self.__images.vaccine, (axis_x, axis_y, 100, 100))
-
 
 
 

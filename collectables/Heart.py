@@ -22,9 +22,13 @@ class Heart:
     def win_life(self):
         if self.__current_life < 3:
             self.__current_life += 1
-
-    def draw_collectable_heart(self, axis_x, axis_y):
-        window.blit(self.__images.heart, (axis_x, axis_y, 100, 100))
+    
+    def zero_lives_left(self):
+        return self.__current_life == 0
+    
+    @property
+    def life(self):
+        return self.__current_life
 
 
 
