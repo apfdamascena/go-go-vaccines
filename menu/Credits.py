@@ -31,16 +31,16 @@ class Credits:
 
             self.__screen.blit(alex_user, (380, 300))
             self.__screen.blit(sofia_user, (420, 350))
-            self.__screen.blit(igor_user, (400, 400))
-            self.__screen.blit(back_action, (390, 500))
+            self.__screen.blit(igor_user, (395, 400))
+            self.__screen.blit(back_action, (393, 500))
 
-            if 390 <= mouse_coords[0] <= 590 and 500 <= mouse_coords[1] <= 525:
+            if 390 <= mouse_coords[0] <= 590 and 500 <= mouse_coords[1] <= 540:
                 back_option = font.render('BACK TO MENU', True, (51, 200, 132))
-                self.__screen.blit(back_option, (390, 500))
+                self.__screen.blit(back_option, (393, 500))
 
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if 390 <= mouse_coords[0] <= 590 and 500 <= mouse_coords[1] <= 525:
+                    if 390 <= mouse_coords[0] <= 590 and 500 <= mouse_coords[1] <= 540:
                         return 'MENU'
 
             pygame.display.update()
