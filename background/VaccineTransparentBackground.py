@@ -38,4 +38,4 @@ class VaccineTransparentBackground:
         self.__stars.move()
         self.__back_buildings.move()
         self.__bottom_city.move()
-        self.__transparent_layer.move()
+        self.__transparent_layer

@@ -3,6 +3,7 @@ from background.VaccineBackground import VaccineBackground
 from background.VaccineTransparentBackground import VaccineTransparentBackground
 import pygame
 import sys
+import os
 
 
 class Credits:
@@ -15,25 +16,26 @@ class Credits:
     def main(self):
         action = True
         while action:
-            font = pygame.font.SysFont('Consolas', 30, bold=True)
+            pinscher_font = os.path.join('font', 'SHPinscher-Regular.otf')
+            font = pygame.font.Font(pinscher_font, 40, bold=True)
             self.__vaccines_background.draw(self.__screen)
-            self.__vaccines_background.move()
+            self.__vaccines_background
 
-            alex_user = font.render('@APFDAMASCENA', True, (255, 255, 255))
-            sofia_user = font.render('@SOFIAMDL', True, (255, 255, 255))
-            igor_user = font.render('@IGRPHILLIPE', True, (255, 255, 255))
+            alex_user = font.render('@APFDAMASCENA', True, (206, 206, 206))
+            sofia_user = font.render('@SOFIAMDL', True, (206, 206, 206))
+            igor_user = font.render('@IGRPHILLIPE', True, (206, 206, 206))
             back_action = font.render(
-                'BACK TO MENU', True, (255, 255, 255))
+                'BACK TO MENU', True, (206, 206, 206))
 
             mouse_coords = pygame.mouse.get_pos()
 
             self.__screen.blit(alex_user, (380, 300))
             self.__screen.blit(sofia_user, (420, 350))
-            self.__screen.blit(igor_user, (390, 400))
+            self.__screen.blit(igor_user, (400, 400))
             self.__screen.blit(back_action, (390, 500))
 
             if 390 <= mouse_coords[0] <= 590 and 500 <= mouse_coords[1] <= 525:
-                back_option = font.render('BACK TO MENU', True, (255, 255, 0))
+                back_option = font.render('BACK TO MENU', True, (51, 200, 132))
                 self.__screen.blit(back_option, (390, 500))
 
             for event in pygame.event.get():
