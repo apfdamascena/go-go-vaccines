@@ -32,7 +32,8 @@ class HandleCrocodileToHuman:
         
     def __change_to_crocodile(self):
         if self.__is_human and self.__crocodile.axis_x < -HandleCrocodileToHumanConstants.AXIS_X_TO_CHANGE_ABSTRACTION:
-            self.__current_human_choice = random.randint(0,3)
+            self.__current_human_choice += HandleCrocodileToHumanConstants.CHANGE_PLAYER
+            self.__current_human_choice %= len(self.__humans)
             self.__is_human = False
 
     def hit_crocodile_with_vaccine(self):
