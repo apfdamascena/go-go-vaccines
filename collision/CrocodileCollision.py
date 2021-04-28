@@ -14,9 +14,5 @@ class CrocodileCollision:
         crocodile_rectangle = crocodile_abstraction.crocodile.get_rect(x=crocodile_abstraction.axis_x, y=crocodile_abstraction.axis_y)
         
         if player_rectangle.colliderect(crocodile_rectangle):
-            if player_rectangle.bottom >= crocodile_rectangle.top and player_rectangle.bottom <= crocodile_rectangle.bottom:
-                return 1
-            else:
-                return -1
-        
-        return 0
+            return True
+        return False

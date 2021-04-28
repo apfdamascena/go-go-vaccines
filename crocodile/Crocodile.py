@@ -27,9 +27,8 @@ class Crocodile:
                     (self.__axis_x, self.__possible_height[crocodile], 70, 30))
         self.__index_height += CrocodileConstants.VELOCITY_TO_CHANGE_IMAGE
         self.__index_height %= CrocodileConstants.QUANTITY_OF_CROCODILE
-        self.__move()
 
-    def __move(self):
+    def move(self):
         self.__axis_x -= BackgroundConstants.VELOCITY
         self.__walk()
 

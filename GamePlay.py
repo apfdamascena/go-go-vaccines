@@ -1,20 +1,17 @@
 from background.MovingBackground import MovingBackground
 from background.VaccineBackground import VaccineBackground
-from background.VaccineTransparentBackground import VaccineTransparentBackground
 from player.Player import Player
 from collision.ObstacleCollision import ObstacleCollision
 from manager.VirusManager import VirusManager
 from manager.ObstacleManager import ObstacleManager
 from collision.VirusCollision import VirusCollision
-from menu.Menu import Menu
-from menu.Credits import Credits
 from collision.HeartCollision import HeartCollision
 from collision.VaccineCollision import VaccineCollision
 from collectables.IndependentHeart import IndependentHeart
 from collectables.IndependentVaccine import IndependentVaccine
 from collectables.Heart import Heart
 from collectables.Vaccine import Vaccine
-from crocodile.Crocodile import Crocodile
+from humans.HandleCrocodileToHuman import HandleCrocodileToHuman
 from collision.CrocodileCollision import CrocodileCollision
 import pygame
 
@@ -29,7 +26,7 @@ class GamePlay:
         self.__vaccine = Vaccine()
         self.__independent_heart = IndependentHeart()
         self.__independent_vaccine = IndependentVaccine()
-        self.__crocodile = Crocodile(680)
+        self.__handle_crocodile_human = HandleCrocodileToHuman()
 
         self.__virus_manager = VirusManager()
         self.__box_manager = ObstacleManager()
@@ -50,7 +47,17 @@ class GamePlay:
             hit_virus = self.__virus_collision.did_virus_collide_with_player(
                 self.__player, self.__virus_manager.virus)
             hit_crocodile = self.__crocodile_collision.did_player_collide_with_crocodile(
-                self.__player, self.__crocodile)
+                self.__player, self.__handle_crocodile_human.crocodile)
+
+            if hit_crocodile and self.__heart.zero_lives_left():
+                print("é para sair")
+            elif hit_crocodile and self.__vaccine.zero_vaccine_left():
+                self.__heart.lost_life()
+            elif hit_crocodile:
+                self.__handle_crocodile_human.hit_crocodile_with_vaccine()
+
+            if hit_virus:
+                self.__heart.lost_life()
 
             self.__draw_managers()
             self.__draw_and_move_player(hit_top_box, hit_side_box)
@@ -70,7 +77,7 @@ class GamePlay:
                 self.__independent_vaccine.colided()
                 self.__vaccine.got_vaccine()
 
-            self.__crocodile.draw(self.__screen)
+            self.__handle_crocodile_human.draw(self.__screen)
             pygame.display.update()
 
 
