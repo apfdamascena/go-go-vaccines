@@ -49,15 +49,21 @@ class GamePlay:
             hit_crocodile = self.__crocodile_collision.did_player_collide_with_crocodile(
                 self.__player, self.__handle_crocodile_human.crocodile)
 
-            if hit_crocodile and self.__heart.zero_lives_left():
-                print("é para sair")
-            elif hit_crocodile and self.__vaccine.zero_vaccine_left():
+            player_is_invencible = self.__player.invencible
+            if not self.__handle_crocodile_human.is_human:
+                if hit_crocodile and self.__heart.zero_lives_left():
+                    print("é para sair")
+                elif hit_crocodile and self.__vaccine.zero_vaccine_left():
+                    if not player_is_invencible:
+                        self.__heart.lost_life()
+                        self.__player.is_invencible()
+                elif hit_crocodile:
+                    self.__handle_crocodile_human.hit_crocodile_with_vaccine()
+                    self.__vaccine.spend_vaccine()
+    
+            if hit_virus and not player_is_invencible:
                 self.__heart.lost_life()
-            elif hit_crocodile:
-                self.__handle_crocodile_human.hit_crocodile_with_vaccine()
-
-            if hit_virus:
-                self.__heart.lost_life()
+                self.__player.is_invencible()
 
             self.__draw_managers()
             self.__draw_and_move_player(hit_top_box, hit_side_box)

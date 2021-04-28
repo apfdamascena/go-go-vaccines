@@ -1,4 +1,5 @@
 import pygame
+import time
 from images.PlayerAssets import PlayerAssets
 from constants.PlayerConstants import PlayerConstants
 from player.JumpAction import JumpAction
@@ -14,9 +15,23 @@ class Player:
         self.__axis_x = PlayerConstants.INITIAL_X
         self.__axis_y = PlayerConstants.INITIAL_Y
         self.__is_top_box = False
+        self.__invencible = False
+        self.__draw_invencible = True
+        self.__invencible_time = time.time()
 
     def draw(self, window):
-        self.__movement.drawing(window, self.__axis_x, self.__axis_y)
+        if not self.__invencible:
+            self.__movement.drawing(window, self.__axis_x, self.__axis_y)
+        else:
+            if self.__invencible_time+1 > time.time():
+                if self.__draw_invencible:
+                    self.__movement.drawing(window, self.__axis_x, self.__axis_y)
+                    self.__draw_invencible = False
+                else:
+                    self.__draw_invencible = True
+            else:
+                self.__invencible = False
+
 
     def move(self, hit_top_box, hit_side_box):
         if hit_top_box:
@@ -74,3 +89,11 @@ class Player:
     @property
     def is_top_box(self):
         return self.__is_top_box
+        
+    @property
+    def invencible(self):
+        return self.__invencible
+
+    def is_invencible(self):
+        self.__invencible = True
+        self.__invencible_time = time.time()

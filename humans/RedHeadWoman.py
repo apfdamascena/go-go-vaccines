@@ -8,3 +8,4 @@ class RedHeadWoman(Human):
         self.__images = RedHeadWomanAssets()
         self.__sprites = self.__images.red_head_woman
         super().__init__(self.__sprites)
+        self.change_axis_y(533)

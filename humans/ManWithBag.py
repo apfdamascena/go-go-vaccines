@@ -8,3 +8,4 @@ class ManWithBag(Human):
         self.__images = ManWithBagAssets()
         self.__sprites = self.__images.man_with_bag
         super().__init__(self.__sprites)
+        self.change_axis_y(545)

@@ -43,4 +43,7 @@ class HandleCrocodileToHuman:
     def crocodile(self):
         return self.__crocodile
 
+    @property
+    def is_human(self):
+        return self.__is_human
     

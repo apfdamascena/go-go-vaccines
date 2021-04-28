@@ -15,5 +15,6 @@ class Human:
         self.__current_image += HumanConstants.VELOCITY_CHANGE_HUMAN_IMAGE
         self.__current_image %= HumanConstants.QUANTITY_OF_IMAGE
 
-
+    def change_axis_y(self, x):
+        self.__axis_y = x
         
