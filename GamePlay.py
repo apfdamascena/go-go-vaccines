@@ -52,7 +52,7 @@ class GamePlay:
             player_is_invencible = self.__player.invencible
             if not self.__handle_crocodile_human.is_human:
                 if hit_crocodile and self.__heart.zero_lives_left():
-                    start = False
+                    pygame.quit()
                 elif hit_crocodile and self.__vaccine.zero_vaccine_left():
                     if not player_is_invencible:
                         self.__heart.lost_life()
@@ -62,6 +62,8 @@ class GamePlay:
                     self.__vaccine.spend_vaccine()
 
             if hit_virus and not player_is_invencible:
+                if self.__heart.zero_lives_left():
+                    pygame.quit()
                 self.__heart.lost_life()
                 self.__player.is_invencible()
 
