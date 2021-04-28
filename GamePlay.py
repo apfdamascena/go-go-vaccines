@@ -15,6 +15,7 @@ from humans.HandleCrocodileToHuman import HandleCrocodileToHuman
 from collision.CrocodileCollision import CrocodileCollision
 import pygame
 
+
 class GamePlay:
 
     def __init__(self):
@@ -37,7 +38,6 @@ class GamePlay:
         self.__virus_collision = VirusCollision()
         self.__heart_collision = HeartCollision()
 
-
     def playing(self, start):
         while start:
             self.__draw_background()
@@ -52,7 +52,7 @@ class GamePlay:
             player_is_invencible = self.__player.invencible
             if not self.__handle_crocodile_human.is_human:
                 if hit_crocodile and self.__heart.zero_lives_left():
-                    print("é para sair")
+                    start = False
                 elif hit_crocodile and self.__vaccine.zero_vaccine_left():
                     if not player_is_invencible:
                         self.__heart.lost_life()
@@ -60,7 +60,7 @@ class GamePlay:
                 elif hit_crocodile:
                     self.__handle_crocodile_human.hit_crocodile_with_vaccine()
                     self.__vaccine.spend_vaccine()
-    
+
             if hit_virus and not player_is_invencible:
                 self.__heart.lost_life()
                 self.__player.is_invencible()
@@ -86,7 +86,6 @@ class GamePlay:
             self.__handle_crocodile_human.draw(self.__screen)
             pygame.display.update()
 
-
     def __draw_collectables(self):
         self.__heart.draw(self.__screen)
         self.__vaccine.draw(self.__screen)
@@ -104,4 +103,3 @@ class GamePlay:
 
     def __draw_background(self):
         self.__vaccines_background.draw(self.__screen)
-
