@@ -1,6 +1,7 @@
 from pygame import mixer
 import os
 
+
 class Sound:
 
     def __init__(self):
@@ -16,6 +17,9 @@ class Sound:
         self.__stomp = mixer.Sound(
             os.path.join('sound', 'sounds', 'stomp.ogg')
         )
+        self.__select = mixer.Sound(
+            os.path.join('sound', 'sounds', 'select.ogg')
+        )
 
     def vaccine_heart_play(self):
         self.__catch_vaccine_heart.play()
@@ -28,4 +32,6 @@ class Sound:
 
     def stomp_opponent_play(self):
         self.__stomp.play()
-        
+
+    def select_option_play(self):
+        self.__select.play()
