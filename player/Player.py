@@ -7,7 +7,6 @@ from player.SquatAction import SquatAction
 from constants.BackgroundConstants import BackgroundConstants
 from player.Movement import Movement
 
-
 class Player:
 
     def __init__(self):
@@ -33,9 +32,7 @@ class Player:
                 self.__invencible = False
 
 
-    def move(self, hit_top_box, hit_side_box):
-        if hit_top_box:
-            self.__movement.jump.stop_jumping()
+    def move(self):
 
         for event in pygame.event.get():
 
@@ -49,13 +46,13 @@ class Player:
 
         self.__axis_y = self.__movement.jump.jumping(self.__axis_y)
 
-        if pygame.key.get_pressed()[pygame.K_RIGHT] and not hit_side_box:
-            if (self.axis_x < 900):
+        if pygame.key.get_pressed()[pygame.K_RIGHT]:
+            if self.axis_x < 900:
                 self.__axis_x += PlayerConstants.VELOCITY
                 self.__movement.handle_bottom_right_pressed()
 
         elif pygame.key.get_pressed()[pygame.K_LEFT]:
-            if (self.__axis_x != 0):
+            if self.__axis_x != 0:
                 self.__axis_x -= PlayerConstants.VELOCITY
                 self.__movement.handle_bottom_left_pressed()
         else:
@@ -70,14 +67,6 @@ class Player:
         if (self.__axis_x != 0):
             self.__axis_x -= BackgroundConstants.VELOCITY
 
-    def change_axis_y(self, hit_top_box):
-        if hit_top_box and not self.__is_top_box:
-            self.__axis_y = 450
-            self.__is_top_box = True
-        if not hit_top_box and self.__is_top_box:
-            self.__axis_y = 540
-            self.__is_top_box = False
-
     @property
     def axis_x(self):
         return self.__axis_x
@@ -85,10 +74,6 @@ class Player:
     @property
     def axis_y(self):
         return self.__axis_y
-
-    @property
-    def is_top_box(self):
-        return self.__is_top_box
         
     @property
     def invencible(self):

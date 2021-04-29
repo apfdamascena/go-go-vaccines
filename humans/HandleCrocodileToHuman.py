@@ -5,6 +5,7 @@ from humans.OldLady import OldLady
 from humans.RedHeadWoman import RedHeadWoman
 from humans.Woman import Woman
 from constants.HandleCrocodileToHumanConstants import HandleCrocodileToHumanConstants
+from sound.Sound import Sound
 import random
 
 class HandleCrocodileToHuman:
@@ -19,6 +20,7 @@ class HandleCrocodileToHuman:
         ]
         self.__current_human_choice = 3
         self.__is_human = False
+        self.__sound = Sound()
 
 
     def draw(self, window):
@@ -38,6 +40,7 @@ class HandleCrocodileToHuman:
 
     def hit_crocodile_with_vaccine(self):
         self.__is_human = True
+        self.__sound.stomp_opponent_play()
 
     @property
     def crocodile(self):
