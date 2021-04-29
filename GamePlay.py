@@ -73,6 +73,7 @@ class GamePlay:
             elif hit_crocodile:
                 self.__handle_crocodile_human.hit_crocodile_with_vaccine()
                 self.__vaccine.spend_vaccine()
+                self.__pontuation.add_point()
 
     def __action_after_hit_virus_and_player_not_invencible(self, hit_virus, player_is_invencible):
         if hit_virus and not player_is_invencible:
