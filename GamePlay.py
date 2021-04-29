@@ -21,15 +21,15 @@ class GamePlay:
         self.__player = Player()
         self.__heart = Heart()
         self.__vaccine = Vaccine()
-        self.__independent_heart = IndependentHeart()
-        self.__independent_vaccine = IndependentVaccine()
         self.__handle_crocodile_human = HandleCrocodileToHuman()
         self.__virus_manager = VirusManager()
         self.__collision = Collisions()
         self.__sound = Sound()
-        self.__pontuation = Pontuation()
 
     def playing(self, start):
+        self.__pontuation = Pontuation()
+        self.__independent_heart = IndependentHeart()
+        self.__independent_vaccine = IndependentVaccine()
         while start:
             self.__draw_background()
 
