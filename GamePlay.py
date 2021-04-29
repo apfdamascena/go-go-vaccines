@@ -9,6 +9,7 @@ from collectables.Vaccine import Vaccine
 from humans.HandleCrocodileToHuman import HandleCrocodileToHuman
 from collision.Collisions import Collisions
 from sound.Sound import Sound
+from pontuation.Pontuation import Pontuation
 import pygame
 
 
@@ -27,6 +28,7 @@ class GamePlay:
         self.__virus_manager = VirusManager()
         self.__collision = Collisions()
         self.__sound = Sound()
+        self.__pontuation = Pontuation()
 
     def playing(self, start):
         while start:
@@ -54,6 +56,8 @@ class GamePlay:
             self.__action_after_hit_vacine(hit_vaccine)
 
             self.__handle_crocodile_human.draw(self.__screen)
+            self.__pontuation.draw(self.__screen)
+
             pygame.display.update()
 
     def __action_after_hit_crocodile(self, hit_crocodile, player_is_invencible):
@@ -104,3 +108,4 @@ class GamePlay:
 
     def __draw_background(self):
         self.__vaccines_background.draw(self.__screen)
+
