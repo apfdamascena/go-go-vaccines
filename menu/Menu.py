@@ -1,8 +1,8 @@
 import os
-import sys
 import pygame
 from background.VaccineTransparentBackground import VaccineTransparentBackground
 from images.LogoAssets import LogoAsset
+from sound.Sound import Sound
 
 
 class Menu:
@@ -19,6 +19,7 @@ class Menu:
         pygame.display.update()
 
     def main(self):
+        sound = Sound()
 
         while True:
             self.draw(self.__screen)
@@ -51,13 +52,16 @@ class Menu:
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if 470 <= mouse_coords[0] <= 570 and 400 <= mouse_coords[1] <= 440:
+                        sound.select_option_play()
                         return 'START'
 
                     if 450 <= mouse_coords[0] <= 550 and 450 <= mouse_coords[1] <= 490:
+                        sound.select_option_play()
                         return 'CREDITS'
 
                     if 475 <= mouse_coords[0] <= 575 and 500 <= mouse_coords[1] <= 540:
-                        pygame.exit()
+                        sound.select_option_play()
+                        pygame.quit()
 
 
 if __name__ == "__main__":
