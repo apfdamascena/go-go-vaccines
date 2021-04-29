@@ -1,6 +1,8 @@
+import os
 import pygame
 from images.CollectablesAssets import CollectablesAssets
 from constants.CollectablesConstants import CollectableConstants
+
 
 class Vaccine:
 
@@ -11,23 +13,19 @@ class Vaccine:
         self.__y = CollectableConstants.Y_VACCINE
 
     def draw(self, window):
-        black = (0,0,0)
         window.blit(self.__images.vaccine, (self.__x, self.__y, 100, 100))
-        font = pygame.font.SysFont('comicsansms', 55)
+        pinscher_font = os.path.join('font', 'SHPinscher-Regular.otf')
+        font = pygame.font.Font(pinscher_font, 40, bold=True)
         text_a = str(self.__vaccine_amount).zfill(2) + ' x '
-        text = font.render(text_a, True, black)
+        text = font.render(text_a, True, (206, 206, 206))
         window.blit(text,  (self.__x-80, self.__y+10, 100, 100))
-
 
     def spend_vaccine(self):
         self.__vaccine_amount -= 1
-    
+
     def zero_vaccine_left(self):
         return self.__vaccine_amount == 0
 
     def got_vaccine(self):
         if self.__vaccine_amount <= 99:
             self.__vaccine_amount += 1
-
-
-

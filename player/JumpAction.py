@@ -29,10 +29,6 @@ class JumpAction:
     def player_is_jumping(self):
         self.__is_jumping = True
     
-    def stop_jumping(self):
-        self.__is_jumping = False
-        self.__jump_time = JumpConstants.JUMP_TIME
-
     @property
     def is_jumping(self):
         return self.__is_jumping

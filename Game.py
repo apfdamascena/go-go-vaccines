@@ -2,7 +2,9 @@ from menu.Menu import Menu
 from menu.Credits import Credits
 from collectables.Heart import Heart
 from GamePlay import GamePlay
+from pygame import mixer
 import pygame
+import os
 
 
 class Game:
@@ -14,6 +16,13 @@ class Game:
         self.__start = False
         self.__credits_action = False
         self.__menu_action = False
+
+        mixer.music.load(
+            os.path.join('sound', 'sounds', 'Mc Fioti - Bum Bum Tam Tam.wav')
+        )
+        mixer.music.set_volume(0.5)
+        mixer.music.play(-1)
+
         pygame.init()
 
     def load(self):

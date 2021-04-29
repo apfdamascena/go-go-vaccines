@@ -4,6 +4,7 @@ from background.VaccineTransparentBackground import VaccineTransparentBackground
 import pygame
 import sys
 import os
+from sound.Sound import Sound
 
 
 class Credits:
@@ -15,6 +16,8 @@ class Credits:
 
     def main(self):
         action = True
+        sound = Sound()
+
         while action:
             pinscher_font = os.path.join('font', 'SHPinscher-Regular.otf')
             font = pygame.font.Font(pinscher_font, 40, bold=True)
@@ -41,6 +44,7 @@ class Credits:
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if 390 <= mouse_coords[0] <= 590 and 500 <= mouse_coords[1] <= 540:
+                        sound.select_option_play()
                         return 'MENU'
 
             pygame.display.update()
