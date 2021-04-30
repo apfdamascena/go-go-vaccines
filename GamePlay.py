@@ -9,8 +9,8 @@ from collectables.Vaccine import Vaccine
 from humans.HandleCrocodileToHuman import HandleCrocodileToHuman
 from collision.Collisions import Collisions
 from sound.Sound import Sound
+from pontuation.Pontuation import Pontuation
 import pygame
-
 
 class GamePlay:
 
@@ -20,14 +20,15 @@ class GamePlay:
         self.__player = Player()
         self.__heart = Heart()
         self.__vaccine = Vaccine()
-        self.__independent_heart = IndependentHeart()
-        self.__independent_vaccine = IndependentVaccine()
         self.__handle_crocodile_human = HandleCrocodileToHuman()
         self.__virus_manager = VirusManager()
         self.__collision = Collisions()
         self.__sound = Sound()
 
     def playing(self, start):
+        self.__pontuation = Pontuation()
+        self.__independent_heart = IndependentHeart()
+        self.__independent_vaccine = IndependentVaccine()
         while start:
             self.__draw_background()
 
@@ -35,7 +36,6 @@ class GamePlay:
                 self.__player, self.__virus_manager.virus)
             hit_crocodile = self.__collision.with_crocodile.did_player_collide_with_crocodile(
                 self.__player, self.__handle_crocodile_human.crocodile)
-
             player_is_invencible = self.__player.invencible
             self.__action_after_hit_crocodile(
                 hit_crocodile, player_is_invencible)
@@ -55,6 +55,7 @@ class GamePlay:
             self.__action_after_hit_vacine(hit_vaccine)
 
             self.__handle_crocodile_human.draw(self.__screen)
+            self.__pontuation.draw(self.__screen)
             pygame.display.update()
 
     def __action_after_hit_crocodile(self, hit_crocodile, player_is_invencible):
@@ -69,6 +70,7 @@ class GamePlay:
             elif hit_crocodile:
                 self.__handle_crocodile_human.hit_crocodile_with_vaccine()
                 self.__vaccine.spend_vaccine()
+                self.__pontuation.add_point()
 
     def __action_after_hit_virus_and_player_not_invencible(self, hit_virus, player_is_invencible):
         if hit_virus and not player_is_invencible:
@@ -105,3 +107,4 @@ class GamePlay:
 
     def __draw_background(self):
         self.__vaccines_background.draw(self.__screen)
+

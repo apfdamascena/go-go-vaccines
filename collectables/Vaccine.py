@@ -15,10 +15,10 @@ class Vaccine:
     def draw(self, window):
         window.blit(self.__images.vaccine, (self.__x, self.__y, 100, 100))
         pinscher_font = os.path.join('font', 'SHPinscher-Regular.otf')
-        font = pygame.font.Font(pinscher_font, 40, bold=True)
+        font = pygame.font.Font(pinscher_font, 45, bold=True)
         text_a = str(self.__vaccine_amount).zfill(2) + ' x '
-        text = font.render(text_a, True, (206, 206, 206))
-        window.blit(text,  (self.__x-80, self.__y+10, 100, 100))
+        text = font.render(text_a, True, (0, 0, 0))
+        window.blit(text,  (self.__x-80, self.__y+5, 100, 100))
 
     def spend_vaccine(self):
         self.__vaccine_amount -= 1

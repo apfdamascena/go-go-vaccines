@@ -6,6 +6,6 @@ class CollectableConstants:
     Y_VACCINE = 20
     INITIAL_Y = 450
     INITIAL_X = 1300
-    SPAWN_TIME_HEART = 13
-    SPAWN_TIME_VACCINE = 20
+    SPAWN_TIME_HEART = 47
+    SPAWN_TIME_VACCINE = 13
     HEART_QUANTITY = 3

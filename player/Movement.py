@@ -50,4 +50,3 @@ class Movement:
     @property
     def squat(self):
         return self.__squat_action
-
