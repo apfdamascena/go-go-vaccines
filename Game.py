@@ -30,7 +30,6 @@ class Game:
         pygame.init()
 
     def load(self):
-
         while True:
             action = self.__menu.main()
 

@@ -74,6 +74,10 @@ class Player:
     @property
     def axis_y(self):
         return self.__axis_y
+
+    @property
+    def movement(self):
+        return self.__movement
         
     @property
     def invencible(self):
@@ -82,3 +86,4 @@ class Player:
     def is_invencible(self):
         self.__invencible = True
         self.__invencible_time = time.time()
+    
