@@ -11,6 +11,7 @@ from collision.Collisions import Collisions
 from sound.Sound import Sound
 from pontuation.Pontuation import Pontuation
 import pygame
+import time
 
 
 class GamePlay:
@@ -33,6 +34,7 @@ class GamePlay:
         self.__independent_vaccine = IndependentVaccine()
 
         while gameover:
+            current_time = time.time()
             self.__draw_background()
 
             hit_virus = self.__collision.with_virus.did_virus_collide_with_player(
@@ -59,7 +61,11 @@ class GamePlay:
 
             self.__handle_crocodile_human.draw(self.__screen)
             self.__pontuation.draw(self.__screen)
+
             pygame.display.update()
+
+            if (gameover == False):
+                return self.__pontuation.get_pontuation(current_time)
 
     def __action_after_hit_crocodile(self, hit_crocodile, player_is_invencible):
         if not self.__handle_crocodile_human.is_human:
@@ -77,6 +83,7 @@ class GamePlay:
         return True
 
     def __action_after_hit_virus_and_player_not_invencible(self, hit_virus, player_is_invencible):
+        current_time = time.time()
         if hit_virus and not player_is_invencible:
             self.__heart.lost_life()
             if self.__heart.zero_lives_left():

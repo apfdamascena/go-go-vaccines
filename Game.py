@@ -20,6 +20,7 @@ class Game:
         self.__credits_action = False
         self.__menu_action = False
         self.__game_over_action = False
+        self.__pontuation = 0
 
         mixer.music.load(
             os.path.join('sound', 'sounds', 'Mc Fioti - Bum Bum Tam Tam.wav')
@@ -56,12 +57,13 @@ class Game:
                 self.__menu_action = True
 
             while self.__start:
-                self.__game_play.playing(self.__start)
+                pontuation = self.__game_play.playing(self.__start)
+                self.__pontuation = pontuation
                 self.__game_over_action = True
                 self.__start = False
 
             while self.__game_over_action:
-                self.__game_over.main()
+                self.__game_over.main(self.__pontuation)
                 self.__init__()
 
 
