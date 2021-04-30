@@ -35,7 +35,7 @@ class GameOver:
 
             pontuation_text = text.render(
                 ('Your score: '+str(score)), True, (51, 200, 132))
-            self.__screen.blit(pontuation_text, (410, 400))
+            self.__screen.blit(pontuation_text, (405, 400))
 
             back = subtitle_font.render(
                 'Press any key to back to menu', True, (206, 206, 206))
