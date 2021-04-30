@@ -43,12 +43,12 @@ class GamePlay:
                 self.__player, self.__handle_crocodile_human.crocodile)
             player_is_invencible = self.__player.invencible
             gameover = self.__action_after_hit_crocodile(
-                hit_crocodile, player_is_invencible)
+                hit_crocodile, player_is_invencible) and gameover
             gameover = self.__action_after_hit_virus_and_player_not_invencible(
-                hit_virus, player_is_invencible)
+                hit_virus, player_is_invencible) and gameover
 
             self.__draw_managers()
-            gameover = self.__player.move()
+            gameover = self.__player.move() and gameover
             self.__player.draw(self.__screen)
             self.__draw_collectables()
 
@@ -75,8 +75,9 @@ class GamePlay:
                     self.__heart.lost_life()
                     if self.__heart.zero_lives_left():
                         return False
-                    self.__player.is_invencible()
-                    self.__sound.lost_life_play()
+                    else:
+                        self.__player.is_invencible()
+                        self.__sound.lost_life_play()
             elif hit_crocodile:
                 self.__handle_crocodile_human.hit_crocodile_with_vaccine()
                 self.__vaccine.spend_vaccine()
@@ -89,8 +90,9 @@ class GamePlay:
             self.__heart.lost_life()
             if self.__heart.zero_lives_left():
                 return False
-            self.__sound.lost_life_play()
-            self.__player.is_invencible()
+            else:
+                self.__sound.lost_life_play()
+                self.__player.is_invencible()
         return True
 
     def __action_after_hit_vacine(self, hit_vaccine):
@@ -113,10 +115,6 @@ class GamePlay:
 
     def __draw_managers(self):
         self.__virus_manager.draw(self.__screen)
-
-    """ def __draw_and_move_player(self):
-        self.__player.move()
-        self.__player.draw(self.__screen) """
 
     def __draw_background(self):
         self.__vaccines_background.draw(self.__screen)
