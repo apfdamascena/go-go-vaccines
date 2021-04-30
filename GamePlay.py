@@ -12,7 +12,6 @@ from sound.Sound import Sound
 from pontuation.Pontuation import Pontuation
 import pygame
 
-
 class GamePlay:
 
     def __init__(self):
@@ -57,7 +56,6 @@ class GamePlay:
 
             self.__handle_crocodile_human.draw(self.__screen)
             self.__pontuation.draw(self.__screen)
-
             pygame.display.update()
 
     def __action_after_hit_crocodile(self, hit_crocodile, player_is_invencible):
