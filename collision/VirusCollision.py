@@ -11,16 +11,16 @@ class VirusCollision:
         self.__player_image = PlayerAssets()
         self.__virus_image = VirusAssets()
 
-    def did_virus_collide_with_player(self, player, amount_of_virus, window):
-        if pygame.key.get_pressed()[pygame.K_DOWN]:
-          player_rectangle = self.__player_image.character_right_run.get_rect(x=(player.axis_x), y=player.axis_y+20)
+    def did_virus_collide_with_player(self, player, amount_of_virus):
+        if pygame.key.get_pressed()[pygame.K_DOWN] and not player.movement.jump.is_jumping:
+          player_rectangle = self.__player_image.character_right_run.get_rect(x=(player.axis_x), y=player.axis_y+30)
         else:
           player_rectangle = self.__player_image.character_right_run.get_rect(x=player.axis_x, y=player.axis_y)
         for virus in amount_of_virus:
-          virus_rectangle = self.__virus_image.virus_blue.get_rect(x=virus.axis_x, y=virus.axis_y)
+            virus_rectangle = self.__virus_image.virus_blue.get_rect(x=virus.axis_x, y=virus.axis_y)
 
-        if player_rectangle.colliderect(virus_rectangle):
-            return True
+            if player_rectangle.colliderect(virus_rectangle):
+                return True
                 
         return False
 
