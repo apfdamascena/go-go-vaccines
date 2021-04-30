@@ -27,3 +27,6 @@ class Pontuation:
         self.__initial_time -= PontuationConstants.PLUS_TRANFORM_HUMAN/PontuationConstants.MULTIPLIER
         self.__added_point = time.time()
 
+    def pontuation(self):
+        return self.__initial_time - PontuationConstants.PLUS_TRANFORM_HUMAN/PontuationConstants.MULTIPLIER
+
