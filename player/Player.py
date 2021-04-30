@@ -82,3 +82,4 @@ class Player:
     def is_invencible(self):
         self.__invencible = True
         self.__invencible_time = time.time()
+    

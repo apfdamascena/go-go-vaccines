@@ -37,7 +37,6 @@ class GamePlay:
                 self.__player, self.__virus_manager.virus)
             hit_crocodile = self.__collision.with_crocodile.did_player_collide_with_crocodile(
                 self.__player, self.__handle_crocodile_human.crocodile)
-
             player_is_invencible = self.__player.invencible
             self.__action_after_hit_crocodile(
                 hit_crocodile, player_is_invencible)
