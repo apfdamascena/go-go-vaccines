@@ -7,6 +7,7 @@ from player.SquatAction import SquatAction
 from constants.BackgroundConstants import BackgroundConstants
 from player.Movement import Movement
 
+
 class Player:
 
     def __init__(self):
@@ -24,13 +25,13 @@ class Player:
         else:
             if self.__invencible_time+1 > time.time():
                 if self.__draw_invencible:
-                    self.__movement.drawing(window, self.__axis_x, self.__axis_y)
+                    self.__movement.drawing(
+                        window, self.__axis_x, self.__axis_y)
                     self.__draw_invencible = False
                 else:
                     self.__draw_invencible = True
             else:
                 self.__invencible = False
-
 
     def move(self):
 
@@ -52,9 +53,10 @@ class Player:
                 self.__movement.handle_bottom_right_pressed()
 
         elif pygame.key.get_pressed()[pygame.K_LEFT]:
-            if self.__axis_x != 0:
-                self.__axis_x -= PlayerConstants.VELOCITY
-                self.__movement.handle_bottom_left_pressed()
+            if self.__axis_x < 0:
+                return False
+            self.__axis_x -= PlayerConstants.VELOCITY
+            self.__movement.handle_bottom_left_pressed()
         else:
             self.__movement.restart_player()
 
@@ -62,6 +64,7 @@ class Player:
             self.__movement.squat.player_is_squatting()
 
         self.__walk()
+        return True
 
     def __walk(self):
         if (self.__axis_x != 0):
@@ -78,7 +81,7 @@ class Player:
     @property
     def movement(self):
         return self.__movement
-        
+
     @property
     def invencible(self):
         return self.__invencible
@@ -86,4 +89,3 @@ class Player:
     def is_invencible(self):
         self.__invencible = True
         self.__invencible_time = time.time()
-    

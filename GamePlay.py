@@ -48,7 +48,8 @@ class GamePlay:
                 hit_virus, player_is_invencible)
 
             self.__draw_managers()
-            self.__draw_and_move_player()
+            gameover = self.__player.move()
+            self.__player.draw(self.__screen)
             self.__draw_collectables()
 
             hit_heart = self.__collision.with_heart.did_heart_collide_with_player(
@@ -113,9 +114,9 @@ class GamePlay:
     def __draw_managers(self):
         self.__virus_manager.draw(self.__screen)
 
-    def __draw_and_move_player(self):
+    """ def __draw_and_move_player(self):
         self.__player.move()
-        self.__player.draw(self.__screen)
+        self.__player.draw(self.__screen) """
 
     def __draw_background(self):
         self.__vaccines_background.draw(self.__screen)
