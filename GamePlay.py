@@ -28,7 +28,8 @@ class GamePlay:
         self.__sound = Sound()
 
     def playing(self, start):
-        while start:
+        gameover = start
+        while gameover:
             self.__draw_background()
 
             hit_virus = self.__collision.with_virus.did_virus_collide_with_player(
@@ -37,9 +38,9 @@ class GamePlay:
                 self.__player, self.__handle_crocodile_human.crocodile)
 
             player_is_invencible = self.__player.invencible
-            self.__action_after_hit_crocodile(
+            gameover = self.__action_after_hit_crocodile(
                 hit_crocodile, player_is_invencible)
-            self.__action_after_hit_virus_and_player_not_invencible(
+            gameover = self.__action_after_hit_virus_and_player_not_invencible(
                 hit_virus, player_is_invencible)
 
             self.__draw_managers()
@@ -63,20 +64,22 @@ class GamePlay:
                 if not player_is_invencible:
                     self.__heart.lost_life()
                     if self.__heart.zero_lives_left():
-                        pygame.quit()
+                        return False
                     self.__player.is_invencible()
                     self.__sound.lost_life_play()
             elif hit_crocodile:
                 self.__handle_crocodile_human.hit_crocodile_with_vaccine()
                 self.__vaccine.spend_vaccine()
+        return True
 
     def __action_after_hit_virus_and_player_not_invencible(self, hit_virus, player_is_invencible):
         if hit_virus and not player_is_invencible:
             self.__heart.lost_life()
             if self.__heart.zero_lives_left():
-                pygame.quit()
+                return False
             self.__sound.lost_life_play()
             self.__player.is_invencible()
+        return True
 
     def __action_after_hit_vacine(self, hit_vaccine):
         if hit_vaccine:
