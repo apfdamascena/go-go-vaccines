@@ -14,6 +14,8 @@ class BackgroundAssets:
     __MOON = os.path.join('assets', 'background', 'Moon.png')
     __TRANSPARENT_LAYER = os.path.join(
         'assets', 'background', 'Background_Transparent.png')
+    __BLACK_BACKGROUND = os.path.join(
+        'assets', 'background', 'black.jpg')
 
     def __init__(self):
         self.__bottom_city = pygame.image.load(self.__IMAGE_BOTTOM_CITY)
@@ -22,6 +24,7 @@ class BackgroundAssets:
         self.__back_buildings = pygame.image.load(self.__IMAGE_BACK_BUILDINGS)
         self.__moon = pygame.image.load(self.__MOON)
         self.__transparent_layer = pygame.image.load(self.__TRANSPARENT_LAYER)
+        self.__black_background = pygame.image.load((self.__BLACK_BACKGROUND))
 
     @property
     def bottom_city(self):
@@ -46,3 +49,7 @@ class BackgroundAssets:
     @property
     def transparent_layer(self):
         return self.__transparent_layer
+
+    @property
+    def black_background(self):
+        return self.__black_background
