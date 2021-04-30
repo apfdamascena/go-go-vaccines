@@ -44,11 +44,11 @@ class GamePlay:
             player_is_invencible = self.__player.invencible
             gameover = self.__action_after_hit_crocodile(
                 hit_crocodile, player_is_invencible)
-            gameover = self.__action_after_hit_virus_and_player_not_invencible(
+            gameover = gameover and self.__action_after_hit_virus_and_player_not_invencible(
                 hit_virus, player_is_invencible)
 
             self.__draw_managers()
-            gameover = self.__player.move()
+            gameover = gameover and self.__player.move() 
             self.__player.draw(self.__screen)
             self.__draw_collectables()
 

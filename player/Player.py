@@ -63,12 +63,13 @@ class Player:
         if pygame.key.get_pressed()[pygame.K_DOWN] and not self.__movement.jump.is_jumping:
             self.__movement.squat.player_is_squatting()
 
-        self.__walk()
-        return True
+        return self.__walk()
 
     def __walk(self):
-        if (self.__axis_x != 0):
-            self.__axis_x -= BackgroundConstants.VELOCITY
+        self.__axis_x -= BackgroundConstants.VELOCITY
+        if (self.__axis_x <= -65):
+            return False
+        return True
 
     @property
     def axis_x(self):
