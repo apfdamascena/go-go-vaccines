@@ -9,7 +9,7 @@
   <h3 align="center">Go-Go Vaccines</h3>
 
   <p align="center">
-This repository was created with the purpose of versioning and managing the final project of introduction to programming classes. The classes were taught by Filipe Calegario and Ricardo Massa
+Given the context of the pandemic, we decided to make an interactive system, based on the super mario game, which brings aspects of the covid in a playful way. In this way, through a game,  we encourage the application of vaccines and ways to protect against the virus. In addition, we use memes as a way to combat some aspects that emerged at the beginning of the pandemic, which defended the non-use of vaccine.
     <br />
     <a href="https://github.com/IgrPhillipe/go-go-vaccines"><strong>Explore the docs »</strong></a>
     <br />
@@ -61,7 +61,7 @@ This repository was created with the purpose of versioning and managing the fina
 
 ## About The Project
 
-Given the context of the pandemic, we decided to make an interactive system, based on the super mario game, which brings aspects of the covid in a playful way. In this way, we encourage the application of vaccines and ways to protect against the virus. In addition, we use memes as a way to satirize some aspects that emerged at the beginning of the pandemic, which defended the non-use of vaccine.
+Given the context of the pandemic, we decided to make an interactive system, based on the super mario game, which brings aspects of the covid in a playful way. In this way, through a game,  we encourage the application of vaccines and ways to protect against the virus. In addition, we use memes as a way to combat some aspects that emerged at the beginning of the pandemic, which defended the non-use of vaccine.
 
 - <strong>TAKE VACCINE AND PROTECT YOURSELF</strong>
 
